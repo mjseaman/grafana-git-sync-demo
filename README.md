@@ -18,7 +18,7 @@ This demo is designed for:
 
 ## Video Recordings
 
-For a visual (but muted :P) walkthrough, you can watch the following recordings:
+For a visual (but muted :P) walkthrough, see the following recordings:
 
 - [Step 1: Establishing GitHub Connection](https://github.com/MissingRoberto/grafana-git-sync-demo/raw/refs/heads/main/assets/videos/git-sync-demo-step-1-connect.mp4).
 - [Step 2: Use Pull Request to Edit your Dashboards](https://github.com/MissingRoberto/grafana-git-sync-demo/raw/refs/heads/main/assets/videos/git-sync-demo-step-2-pull-request.mp4).

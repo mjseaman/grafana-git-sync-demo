@@ -25,6 +25,18 @@ For a visual (but muted :P) walkthrough, you can watch the following recordings:
 - [Step 3: Edit Dashboard from Github](https://github.com/MissingRoberto/grafana-git-sync-demo/raw/refs/heads/main/assets/videos/git-sync-demo-step-3-github-com.mp4).
 - [Step 4: Edit Dashboard with grafanactl](https://github.com/MissingRoberto/grafana-git-sync-demo/raw/refs/heads/main/assets/videos/git-sync-demo-step-4-grafanactl.mp4).
 
+## Intro
+
+[Git Sync](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/) is Grafana's solution for implementing [Observability as Code (OaC)](https://grafana.com/docs/grafana/latest/observability-as-code/). It enables bi-directional synchronization between your Grafana dashboards and a Git repository, allowing you to:
+
+- Version control your dashboards and other Grafana resources
+- Review changes through pull requests with visual previews
+- Automate dashboard deployments
+- Collaborate with team members using familiar Git workflows
+- Maintain a single source of truth for your observability stack
+
+This demo will walk you through setting up Git Sync and using it to manage your Grafana dashboards effectively.
+
 ## Requirements
 
 - A terminal (you've got this!).
@@ -49,18 +61,6 @@ For a visual (but muted :P) walkthrough, you can watch the following recordings:
    ```bash
    docker-compose up
    ```
-
-## Intro
-
-[Git Sync](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/) is Grafana's solution for implementing [Observability as Code (OaC)](https://grafana.com/docs/grafana/latest/observability-as-code/). It enables bi-directional synchronization between your Grafana dashboards and a Git repository, allowing you to:
-
-- Version control your dashboards and other Grafana resources
-- Review changes through pull requests with visual previews
-- Automate dashboard deployments
-- Collaborate with team members using familiar Git workflows
-- Maintain a single source of truth for your observability stack
-
-This demo will walk you through setting up Git Sync and using it to manage your Grafana dashboards effectively.
 
 ## Step 1: Migrate Dashboards to GitHub
 

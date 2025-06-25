@@ -8,7 +8,7 @@ Hey there! This is a demo you can use to try [Grafana Git Sync](https://grafana.
 > [!WARNING]
 > Git Sync is currently [experimental]([url](https://grafana.com/docs/release-life-cycle/)) and may have limitations or breaking changes. While it represents Grafana's first step toward comprehensive Observability as Code, we don't yet recommend using it for production or critical environments. Try it in dev or using this test kit instead!
 
-## Target Audience
+## Target Audience  
 
 This demo is designed for:
 
@@ -25,7 +25,14 @@ For a visual (but muted :P) walkthrough, see the following recordings:
 - [Step 3: Edit Dashboard from Github](https://github.com/MissingRoberto/grafana-git-sync-demo/raw/refs/heads/main/assets/videos/git-sync-demo-step-3-github-com.mp4).
 - [Step 4: Edit Dashboard with grafanactl](https://github.com/MissingRoberto/grafana-git-sync-demo/raw/refs/heads/main/assets/videos/git-sync-demo-step-4-grafanactl.mp4).
 
-## Intro
+## Requirements
+
+- A terminal (you've got this!).
+- An empty repository to push and pull changes.
+- A PAT (Personal Access Token) with the right permissions for your repository, including webhook events and pull requests. See [Create a Github Access Token](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/#create-a-github-access-token).
+- [grafanactl](https://grafana.github.io/grafanactl/installation/) installed.
+
+## Introduction
 
 [Git Sync](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/) is Grafana's solution for implementing [Observability as Code (OaC)](https://grafana.com/docs/grafana/latest/observability-as-code/). It enables bi-directional synchronization between your Grafana dashboards and a Git repository, allowing you to:
 
@@ -37,31 +44,57 @@ For a visual (but muted :P) walkthrough, see the following recordings:
 
 This demo will walk you through setting up Git Sync and using it to manage your Grafana dashboards effectively.
 
-## Requirements
+## Step 1: Environment Setup
 
-- A terminal (you've got this!).
+Choose one of the following setup paths based on your current environment:
+
+### Path A: Using an Existing Grafana Instance
+
+If you already have a Grafana instance running, ensure it meets these requirements:
+
+- Grafana nightly build with Git Sync enabled. Follow the [Git Sync documentation](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/).
 - Image rendering up and running. Check out the [Image Rendering documentation](https://grafana.com/docs/grafana/latest/setup-grafana/image-rendering/).
-- Grafana nightly build with Git Sync enabled. Follow the [Git Sync documentation](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/) and make sure webhooks and image rendering are set up so pull request comments and instant sync work smoothly.
-- An empty repository to push and pull changes.
-- A GitHub PAT (Personal Access Token) with the right permissions for your repository, including webhook events and pull requests. See [Create a Github Access Token](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/#create-a-github-access-token).
-- (optional) [grafanactl](https://grafana.github.io/grafanactl/installation/) installed.
+- Webhooks properly configured so pull request comments and instant sync work smoothly.
+- Some dashboards and folders already created in your Grafana instance.
 
-**Note**: If you don't have an existing environment or want to quickly try out the demo, you can set up a demo environment using [Docker](https://www.docker.com/) and [Ngrok](https://ngrok.com/). Follow these steps:
+Once your existing instance meets these requirements, you can proceed directly to [Step 2: Migrate Dashboards to GitHub](#step-2-migrate-dashboards-to-github).
 
-1. Configure the necessary environment variables for NGROK. You can export them in your terminal session:
+### Path B: Using the Demo Environment (Docker Compose)
 
+If you want to quickly try out the demo with a fresh environment, you can use the provided Docker Compose setup:
+
+#### Prerequisites for Docker Path
+- [Docker](https://www.docker.com/) installed and running
+- [Ngrok](https://ngrok.com/) account and credentials
+
+#### Setup Steps
+
+1. **Set up your ngrok account and credentials:**
+   - Sign up for a free account at [ngrok.com](https://ngrok.com/)
+   - Once logged in, go to your [ngrok dashboard](https://dashboard.ngrok.com/get-started/your-authtoken) to get your auth token
+   - Choose a subdomain name (this will be part of your public URL, e.g., `your-subdomain.ngrok.io`)
+
+2. **Start the demo environment with your ngrok credentials:**
    ```bash
-   export NGROK_AUTH_TOKEN=<your-ngrok-auth-token>
-   export NGROK_SUBDOMAIN=<your-desired-subdomain>
+   NGROK_AUTHTOKEN=<your-ngrok-auth-token> NGROK_SUBDOMAIN=<your-desired-subdomain> docker-compose up
    ```
-
-2. Execute the following command to start the demo environment:
-
+   
+   Alternatively, you can create a `.env` file in the project root with your credentials:
    ```bash
+   echo "NGROK_AUTHTOKEN=<your-ngrok-authtoken>" > .env
+   echo "NGROK_SUBDOMAIN=<your-desired-subdomain>" >> .env
    docker-compose up
    ```
 
-## Step 1: Migrate Dashboards to GitHub
+3. **Access your Grafana instance:**
+   - Your Grafana instance will be available at `https://your-subdomain.ngrok.io`
+   - The setup includes pre-configured dashboards and folders for the demo
+
+Once your Docker environment is running, proceed to [Step 2: Migrate Dashboards to GitHub](#step-2-migrate-dashboards-to-github).
+
+**Note**: Ngrok is required to expose your local Grafana instance to the internet so that GitHub can send webhook events for Git Sync's bidirectional synchronization features.
+
+## Step 2: Migrate Dashboards to GitHub
 
 ![](./assets/gifs/git-sync-demo-step-1-connect.gif)
 
@@ -90,7 +123,7 @@ Here's how to migrate your existing dashboards to GitHub and enable bi-direction
 
 That's it! Your Grafana instance is now connected to GitHub with Git Sync, keeping everything in sync.
 
-## Step 2: Use Pull Requests for Your Dashboards
+## Step 3: Use Pull Requests for Your Dashboards
 
 ![](./assets/gifs/git-sync-demo-step-2-pull-request.gif)
 
@@ -121,7 +154,7 @@ You can edit dashboards in Grafana and submit changes as pull requests in GitHub
 - In Grafana:
   - Go to your dashboard (or refresh) to see the changes were applied automatically.
 
-## Step 3: Edit a Dashboard from Github
+## Step 4: Edit a Dashboard from Github
 
 ![](./assets/gifs/git-sync-demo-step-3-github-com.gif)
 
@@ -133,7 +166,7 @@ You can edit dashboards in Grafana and submit changes as pull requests in GitHub
   - Go to that dashboard (or refresh).
   - See that changes are now reflected.
 
-## Step 4: Edit a Dashboard Using `grafanactl`
+## Step 5: Edit a Dashboard Using `grafanactl`
 
 > `grafanactl` is a command-line tool that helps you manage Grafana resources like dashboards, folders, and datasources. The tool integrates with Git Sync, allowing you to manage your dashboards through both the Grafana UI and command line, giving you flexibility in how you work with your dashboards.
 

@@ -1,12 +1,12 @@
 # grafana-git-sync-demo
 
-Hey there! This is a fun demo showing how to use [Grafana Git Sync](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/) and [grafanactl](https://github.com/grafana/grafanactl).
+Hey there! This is a demo you can use to try [Grafana Git Sync](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/) and [grafanactl](https://github.com/grafana/grafanactl) while they are still experimental.
 
 > [!NOTE]
-> This documentation reflects the state of Git Sync as of May 2025. As this feature is actively evolving, some instructions may become outdated quickly. Please refer to the [official Grafana documentation](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/) for the most up-to-date information.
+> This documentation reflects the state of Git Sync as of June 2025. As this feature is actively evolving, some instructions may become outdated quickly. Please refer to the [official Grafana documentation](https://grafana.com/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/) for the most up-to-date information.
 
 > [!WARNING]
-> Git Sync is currently in an experimental phase and may have limitations or breaking changes. While it represents Grafana's first step toward comprehensive Observability as Code, we don't recommend using it in production or critical environments.
+> Git Sync is currently [experimental]([url](https://grafana.com/docs/release-life-cycle/)) and may have limitations or breaking changes. While it represents Grafana's first step toward comprehensive Observability as Code, we don't yet recommend using it for production or critical environments. Try it in dev or using this test kit instead!
 
 ## Target Audience
 
@@ -15,8 +15,6 @@ This demo is designed for:
 - **DevOps Engineers** looking to implement Observability as Code practices.
 - **SREs** wanting to version control their monitoring dashboards.
 - **Grafana Users** interested in automating dashboard management.
-- **Teams** seeking to improve collaboration on dashboard development.
-- **Anyone** curious about Grafana's Git Sync feature and its capabilities.
 
 ## Video Recordings
 
